@@ -39,4 +39,8 @@ abstract class AbstMember {
 		this.name = name;
 	}
 
+	class Member {
+
+	}
+
 }

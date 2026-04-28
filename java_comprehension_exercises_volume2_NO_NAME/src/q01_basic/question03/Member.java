@@ -1,9 +1,10 @@
 package q01_basic.question03;
 
 class Member {
-	String name;
-	int age;
-	int rank;
+
+	private String name;
+	private int age;
+	private int rank;
 
 	public Member() {
 
