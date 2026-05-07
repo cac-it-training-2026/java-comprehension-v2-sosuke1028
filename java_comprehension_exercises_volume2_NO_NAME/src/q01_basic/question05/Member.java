@@ -1,11 +1,28 @@
-package q01_basic.question04;
+package q01_basic.question05;
 
-class Member {
+public class Member extends AbstMember {
+
 	private int id;
 	private String password;
-	private String name;
 	private int age;
 	private int rank;
+
+	@Override
+	public void buyItem() {
+		System.out.println(this.name + " purchased the item at 50% off");
+	}//親（抽象）を継承しているからこのnameにはthisをつける。
+		//これによりnameが子であるクラスのものということがわｋる
+
+	@Override
+	public void showMember() {
+		System.out.println("***MEMBERS DATA***");
+		System.out.println("id:" + getId());
+		System.out.println("password:" + getPassword());
+		System.out.println("name:" + getName());
+		System.out.println("age:" + getAge());
+		System.out.println("rank:" + getRank());
+		System.out.println("*****************");
+	}
 
 	public Member() {
 
@@ -42,6 +59,7 @@ class Member {
 	/**
 	 * @return name
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -49,6 +67,7 @@ class Member {
 	/**
 	 * @param name セットする name
 	 */
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -96,14 +115,14 @@ class Member {
 		this.rank = rank;
 	}
 
-	public void showMember() {
-		System.out.println("***MEMBERS DATA***");
-		System.out.println("id:" + getId());
-		System.out.println("password:" + getPassword());
-		System.out.println("name:" + getName());
-		System.out.println("age:" + getAge());
-		System.out.println("rank:" + getRank());
-		System.out.println("*****************");
-	}
+	//public void showMember() {
+	//	System.out.println("***MEMBERS DATA***");
+	//	System.out.println("id:" + getId());
+	//	System.out.println("password:" + getPassword());
+	//	System.out.println("name:" + getName());
+	//	System.out.println("age:" + getAge());
+	//	System.out.println("rank:" + getRank());
+	//	System.out.println("*****************");
+	//}
 
 }
