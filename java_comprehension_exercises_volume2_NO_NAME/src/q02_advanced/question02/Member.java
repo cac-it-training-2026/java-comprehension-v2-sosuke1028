@@ -11,104 +11,21 @@ public class Member {
 	private int rank;
 	private List<Coupon> coupons;
 
-	/**
-	 * @return id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id セットする id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return password
-	 */
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * @param password セットする password
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	/**
-	 * @return name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name セットする name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return age
-	 */
-	public int getAge() {
-		return age;
-	}
-
-	/**
-	 * @param age セットする age
-	 */
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	/**
-	 * @return rank
-	 */
-	public int getRank() {
-		return rank;
-	}
-
-	/**
-	 * @param rank セットする rank
-	 */
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	/**
-	 * @return coupons
-	 */
-	public List<Coupon> getCoupons() {
-		return coupons;
-	}
-
-	/**
-	 * @param coupons セットする coupons
-	 */
-	public void setCoupons(List<Coupon> coupons) {
-		this.coupons = coupons;
-	}
-
-	/**
-	 * 
-	 */
+	// テストケース2用：new Member() で coupons が null になるようにする
 	public Member() {
 	}
 
-	/**
-	 * @param id
-	 * @param password
-	 * @param name
-	 * @param age
-	 * @param rank
-	 * @param coupons
-	 */
+	// テストケース3用：引数5つで coupons が空の ArrayList になるようにする
+	public Member(int id, String password, String name, int age, int rank) {
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.age = age;
+		this.rank = rank;
+		this.coupons = new ArrayList<>();
+	}
+
+	// 内部用・getInstance用：引数6つ
 	public Member(int id, String password, String name, int age, int rank, List<Coupon> coupons) {
 		this.id = id;
 		this.password = password;
@@ -118,6 +35,16 @@ public class Member {
 		this.coupons = coupons;
 	}
 
+	// テストケース1用：getInstance
+	public static Member getInstance(int id, String password, String name, int age, int rank) {
+		List<Coupon> initialCoupons = new ArrayList<>();
+		// テストコードの期待値と一文字一句合わせる
+		initialCoupons.add(Coupon.getInstance(1, 0.5, "最初の特典"));
+		initialCoupons.add(Coupon.getInstance(2, 0.25, "今月の特典"));
+
+		return new Member(id, password, name, age, rank, initialCoupons);
+	}
+
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
@@ -125,24 +52,55 @@ public class Member {
 	}
 
 	public void showMember() {
-		System.out.println(toString());
+		System.out.println(this.toString());
 	}
 
-	public static Member getInstance(int id, String password, String name, int age, int rank) {
-		Coupon c1 = Coupon.getInstance(1, 0.5, "最初の特典");
-		Coupon c2 = Coupon.getInstance(2, 0.25, "今月の特典");
-
-		// 3. 生成したクーポンを Member のリストに追加する
-		// コンストラクタでリストを初期化していない場合は、ここで new が必要です
-		List<Coupon> couponList = new ArrayList<>();
-		couponList.add(c1);
-		couponList.add(c2);
-
-		Member member = new Member(id, password, name, age, rank, null);
-		member.setCoupons(couponList);
-
-		// 4. 完成した Member オブジェクトを戻り値として返す
-		return member;
+	// 全ての Getter / Setter (テストが値を読み取るために必須)
+	public int getId() {
+		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	public List<Coupon> getCoupons() {
+		return coupons;
+	}
+
+	public void setCoupons(List<Coupon> coupons) {
+		this.coupons = coupons;
+	}
 }
