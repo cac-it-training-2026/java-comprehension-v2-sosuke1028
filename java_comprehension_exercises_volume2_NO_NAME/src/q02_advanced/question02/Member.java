@@ -103,4 +103,4 @@ public class Member {
 	public void setCoupons(List<Coupon> coupons) {
 		this.coupons = coupons;
 	}
-}
+}//
